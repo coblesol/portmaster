@@ -1,0 +1,18 @@
+type: settings
+config:
+    dns:
+        noAssignedNameservers: true
+        noInsecureProtocols: true
+    filter:
+        lists:
+            - TRAC
+            - MAL
+            - DECEP
+            - BAD
+            - PORN
+            - VIOL
+            - NSFWM
+            - EXPERIMENTS
+            - UNBREAK
+
+# jess-checksum: ZwvV158LdHAsa8rasXXMaFHqvEurGbzVS3o3qtAMYiPpTR
