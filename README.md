@@ -38,15 +38,30 @@ config:
 You can install Portmaster on Linux in two ways:
 
 🔗 Option 1: Download via Official Website
-👉 https://safing.io/portmaster/download
+👉 [[https://safing.io/portmaster/download](https://safing.io/)](https://safing.io/)
 Choose the installer for your OS (Linux, Windows, etc.)
 
 🖥️ Option 2: Install via Command Line (Linux)
+If you're using a Debian-based distro (like Ubuntu or Linux Mint), follow these steps to securely install the Portmaster GUI using your terminal:
+
 bash
 Copy
 Edit
-wget -qO - https://releases.safing.io/portmaster/installer/linux.sh | bash
-🛡️ This downloads and installs the latest Portmaster release and enables it as a service.
+# Step 1: Download and run the official Portmaster installer
+wget -qO - https://releases.safing.io/portmaster/installer/linux.sh | sudo bash
+🔐 Note: sudo is required because the installer sets up Portmaster as a system service and installs it into /opt.
+
+🧪 What This Does:
+Downloads the latest Portmaster GUI app
+
+Installs it under /opt/portmaster
+
+Registers it as a system service so it auto-starts with your OS
+
+Creates a desktop entry so it’s available in your application launcher
+
+💡 Why It Matters
+This makes sure Portmaster runs system-wide, protecting all apps — not just your browser. It's a smart way to block telemetry, trackers, and malicious connections on company devices while still allowing VPN connections like ProtonVPN to work properly.
 
 💡 Why It Matters
 This configuration is designed to block telemetry, ads, sketchy traffic, and unnecessary connections while keeping your VPN and core services functional. Ideal for companies wanting lightweight endpoint privacy without managing a full enterprise firewall stack.
