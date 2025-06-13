@@ -1,20 +1,19 @@
 🔧 Portmaster Privacy Firewall Configuration Guide
-This project showcases my ability to deploy and configure Portmaster — a powerful open-source privacy firewall — for endpoint protection. It’s designed to balance strong privacy protections with usability, especially ensuring VPN functionality (e.g. ProtonVPN) stays intact while blocking unnecessary or unwanted traffic.
+This project showcases my ability to securely deploy and configure Portmaster, an open-source privacy firewall, across endpoints — including employee workstations and IoT devices.
 
-🎯 Project Goal
-This setup demonstrates my:
+It balances strong privacy protections with real-world usability, ensuring VPN compatibility (like ProtonVPN) while blocking telemetry, ads, and other unnecessary traffic.
+
+🎯 Project Goals
+This configuration demonstrates my:
 
 ✅ Proficiency in configuring privacy and security tools
 ✅ Ability to troubleshoot DNS and firewall-related networking issues
-✅ Skill in balancing strong privacy with day-to-day usability (e.g. VPNs, system services)
-✅ Readiness to configure endpoint protection across company devices (Windows/Linux/IoT)
+✅ Skill in balancing privacy with day-to-day usability (e.g. VPNs, company apps)
+✅ Readiness to configure endpoint protection on Windows/Linux/IoT in a business environment
 
-🛠️ Portmaster Hardened Configuration
-This config is designed for the "average user" — solid privacy, minimal breakage, and ready for deployment on employee devices.
+🛠️ Hardened Configuration (Copy & Paste)
+This setup is ideal for an average user or company device. It prioritizes privacy without breaking essential functionality.
 
-yaml
-Copy
-Edit
 type: settings
 config:
     dns:
@@ -29,39 +28,48 @@ config:
             - BAD         # Mixed Threats
             - PORN        # Adult Content
             - VIOL        # Violence
-            - NSFWM       # Not Safe for Work (Meme)
+            - NSFWM       # Not Safe for Work (Memes)
             - EXPERIMENTS # Experimental Lists
             - UNBREAK     # Allow List for Stability
-✅ Note: I intentionally left ForceBlockP2P and ForceBlockIncomingConnections off to avoid breaking VPN connections. These can be re-enabled per device if needed — for example, ProtonVPN is explicitly allowed in my setup.
+
+
+✅ Note: I intentionally left ForceBlockP2P and ForceBlockIncomingConnections off to prevent breaking VPNs like ProtonVPN. These can be enabled on a per-device basis if needed.
 
 📥 Installation Options
-You can install Portmaster on Linux in two ways:
+🔗 Option 1: Download from Official Website
+👉 https://safing.io/portmaster/download
 
-🔗 Option 1: Download via Official Website
-👉 [[https://safing.io/portmaster/download](https://safing.io/)](https://safing.io/)
-Choose the installer for your OS (Linux, Windows, etc.)
+Select the version for your operating system (Linux, Windows, etc.)
 
-🖥️ Option 2: Install via Command Line (Linux)
-If you're using a Debian-based distro (like Ubuntu or Linux Mint), follow these steps to securely install the Portmaster GUI using your terminal:
+🖥️ Option 2: Install via Terminal (Debian-based Linux)
+Use these commands to install Portmaster with GUI support on Ubuntu, Linux Mint, or other Debian-based systems:
+# Step 1: Download the Portmaster installer script
 
-bash
-Copy
-Edit
-# Step 1: Download and run the official Portmaster installer
-wget -qO - https://releases.safing.io/portmaster/installer/linux.sh | sudo bash
-🔐 Note: sudo is required because the installer sets up Portmaster as a system service and installs it into /opt.
+wget https://releases.safing.io/portmaster/installer/linux.sh -O portmaster-installer.sh
+# Step 2: Make the script executable
+chmod +x portmaster-installer.sh
 
-🧪 What This Does:
-Downloads the latest Portmaster GUI app
+# Step 3: Run the installer with sudo privileges
+sudo ./portmaster-installer.sh
 
-Installs it under /opt/portmaster
 
-Registers it as a system service so it auto-starts with your OS
+🧪 What This Does
+Installs Portmaster to /opt/portmaster
 
-Creates a desktop entry so it’s available in your application launcher
+Registers it as a system service
 
-💡 Why It Matters
-This makes sure Portmaster runs system-wide, protecting all apps — not just your browser. It's a smart way to block telemetry, trackers, and malicious connections on company devices while still allowing VPN connections like ProtonVPN to work properly.
+Adds it to your application launcher
+
+Starts automatically on boot
 
 💡 Why It Matters
-This configuration is designed to block telemetry, ads, sketchy traffic, and unnecessary connections while keeping your VPN and core services functional. Ideal for companies wanting lightweight endpoint privacy without managing a full enterprise firewall stack.
+This setup ensures that all apps, not just your browser, are protected by DNS filtering, firewall controls, and traffic blocking — while keeping essential services like VPNs functional.
+
+It’s a practical solution for:
+
+🔒 Companies that want endpoint-level privacy without enterprise firewall complexity
+📡 Users who want to block trackers, telemetry, and bad connections
+🧑‍💻 IT teams looking for lightweight, user-deployable security tools
+
+
+
